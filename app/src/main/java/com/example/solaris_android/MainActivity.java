@@ -21,8 +21,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         WebView webView = (WebView) findViewById(R.id.webview);
+        webView.clearCache(true);
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setAppCacheEnabled(false);
+
         webView.setWebViewClient(new MyBrowser());
         webView.loadUrl("https://solaris.games");
     }
