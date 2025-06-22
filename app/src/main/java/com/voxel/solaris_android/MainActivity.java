@@ -1,8 +1,13 @@
 package com.voxel.solaris_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Window;
@@ -18,9 +23,35 @@ public class MainActivity extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
 
+        final var window = getWindow();
+
+        WindowCompat.setDecorFitsSystemWindows(window, false);
+
         setContentView(R.layout.activity_main);
 
-        WebView webView = (WebView) findViewById(R.id.webview);
+        final var webView = (WebView) findViewById(R.id.webview);
+        final var root = findViewById(R.id.root);
+
+        window.setStatusBarColor(Color.TRANSPARENT);
+        window.setNavigationBarColor(Color.TRANSPARENT);
+
+        final var insetsController = WindowCompat.getInsetsController(window, root);
+        insetsController.setAppearanceLightNavigationBars(true);
+        insetsController.setAppearanceLightStatusBars(true);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (view, insets) -> {
+            final var systemBarInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+
+            view.setPadding(
+                    systemBarInsets.left,
+                    systemBarInsets.top,
+                    systemBarInsets.right,
+                    systemBarInsets.bottom
+            );
+
+            return insets;
+        });
+
         webView.clearCache(true);
 
         WebSettings webSettings = webView.getSettings();
