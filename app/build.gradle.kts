@@ -12,7 +12,7 @@ android {
         applicationId = "com.voxel.solaris_android"
         minSdk = 24
         targetSdk = 35
-        versionCode = 2
+        versionCode = 3
         versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
