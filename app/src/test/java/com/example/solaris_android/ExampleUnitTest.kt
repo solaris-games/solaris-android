@@ -1,4 +1,4 @@
-package com.example.solaris_android
+package com.voxel.solaris_android
 
 import org.junit.Test
 

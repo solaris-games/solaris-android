@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.solaris_android"
+    namespace = "com.voxel.solaris_android"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.solaris_android"
+        applicationId = "com.voxel.solaris_android"
         minSdk = 24
         targetSdk = 35
         versionCode = 2
