@@ -41,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
         ViewCompat.setOnApplyWindowInsetsListener(root, (view, insets) -> {
             final var systemBarInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            final var imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime());
+
+            final var bottomInset = Math.max(systemBarInsets.bottom, imeInsets.bottom);
 
             view.setPadding(
                     systemBarInsets.left,
                     systemBarInsets.top,
                     systemBarInsets.right,
-                    systemBarInsets.bottom
+                    bottomInset
             );
 
             return insets;
