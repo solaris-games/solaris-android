@@ -32,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
         final var webView = (WebView) findViewById(R.id.webview);
         final var root = findViewById(R.id.root);
 
-        window.setStatusBarColor(Color.TRANSPARENT);
-        window.setNavigationBarColor(Color.TRANSPARENT);
-
         final var insetsController = WindowCompat.getInsetsController(window, root);
-        insetsController.setAppearanceLightNavigationBars(true);
-        insetsController.setAppearanceLightStatusBars(true);
+        insetsController.setAppearanceLightNavigationBars(false);
+        insetsController.setAppearanceLightStatusBars(false);
 
         ViewCompat.setOnApplyWindowInsetsListener(root, (view, insets) -> {
             final var systemBarInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars());
